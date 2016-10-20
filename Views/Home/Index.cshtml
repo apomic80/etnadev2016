@@ -2,4 +2,6 @@
     ViewBag.Title = "EtnaDev.Net - Home Page - EtnaDev.NET";
 }
 
-<h1>EtnaDev</h1>
+@Html.Partial("_Header")
+@await Html.PartialAsync("_Event")
+@{ await Html.RenderPartialAsync("_ChiSiamo"); }
