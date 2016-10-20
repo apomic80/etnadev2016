@@ -1,10 +1,13 @@
+using Microsoft.AspNetCore.Mvc;
+
 namespace EtnaDev.Controllers 
 {
 
-    public class HomeController
+    public class HomeController : Controller
     {
-        public string Index() {
-            return "Hello World";
+        public IActionResult Index() 
+        {
+            return View();
         }
     }
 
