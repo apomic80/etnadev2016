@@ -5,3 +5,5 @@
 @Html.Partial("_Header")
 @await Html.PartialAsync("_Event")
 @{ await Html.RenderPartialAsync("_ChiSiamo"); }
+
+@await Component.InvokeAsync("Registration")

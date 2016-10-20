@@ -1,0 +1,111 @@
+@model EtnaDev.Models.ViewModels.RegistrationViewModel
+<section id="Registrati" class="registrati">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Registrati</h2>
+            </div>
+        </div>
+        <div class="row">
+            <h4 class="text-center">Partecipa all'evento più grande del sud! evento che si terrà presso il dipartimento di ingegneria e informatica dell'università di catania</h4>
+        </div>
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Modulo di Registrazione</h2>
+            </div>
+        </div>
+        <form id="registerattendee" method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="FirstName">Nome*</label>
+                    <input asp-for="FirstName" type="text" class="form-control">
+                    <span asp-validation-for="FirstName" class="alert-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="LastName">Cognome*</label>
+                    <input asp-for="LastName" type="text" class="form-control">
+                    <span asp-validation-for="LastName" class="alert-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="Email">Email*</label>
+                    <input asp-for="Email" type="text" class="form-control">
+                    <span asp-validation-for="Email" class="alert-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="CompanyName">Università o Azienda*</label>
+                    <input asp-for="CompanyName" type="text" class="form-control">
+                    <span asp-validation-for="CompanyName" class="alert-danger"></span>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="Phone">Telefono</label>
+                    <input asp-for="Phone" type="text" class="form-control">
+                    <span asp-validation-for="Phone" class="alert-danger"></span>
+                </div>
+                <div class="col-md-4">
+                    <label asp-for="Address">Indirizzo</label>
+                    <input asp-for="Address" type="text" class="form-control">
+                    <span asp-validation-for="Address" class="alert-danger"></span>
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="City">Città</label>
+                    <input asp-for="City" type="text" class="form-control">
+                    <span asp-validation-for="City" class="alert-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label asp-for="Province">Provincia</label>
+                    <input asp-for="Province" type="text" class="form-control">
+                    <span asp-validation-for="Province" class="alert-danger"></span>
+
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="Country">Paese</label>
+                    <input asp-for="Country" type="text" class="form-control">
+                    <span asp-validation-for="Country" class="alert-danger"></span>
+
+                </div>
+                <div class="col-md-3">
+                    <label asp-for="PostalCode">CAP</label>
+                    <input asp-for="PostalCode" type="text" class="form-control">
+                    <span asp-validation-for="PostalCode" class="alert-danger"></span>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input id="chkPrivacy" type="checkbox"><label for="chkPrivacy">Ai sensi della legge 196/03 sulla sul trattamento dei dati personali, La informiamo che i dati i dati saranno utilizzati per le finalità connesse all'evento e se hai inserito il tuo CV autorizzi Etnadev.net a fornire lo stesso agli sponsor dell'evento.</label>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-3">
+                    <input type="submit" value="Iscriviti" class="btn btn-warning btn-lg">
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+<script>
+    $(function () {
+        $("#registerattendee").submit(function (event) {
+            event.preventDefault();
+            var form = $(this);
+            if (form.valid()) {
+                if ($('#chkPrivacy').prop('checked') == undefined || $('#chkPrivacy').prop('checked') == false) {
+                    alert("Non hai confermato l'informativa sulla privacy. Impossibile confermare la tua registrazione");
+                }
+                else {
+                    $.post('/Home/Register', form.serialize())
+                        .done(function () { alert("Registrazione avvenuta con successo!"); })
+                        .fail(function () { alert("Errore durante la registrazione, verificare i dati immessi!"); });
+                }
+            }
+        });
+    });
+</script>
