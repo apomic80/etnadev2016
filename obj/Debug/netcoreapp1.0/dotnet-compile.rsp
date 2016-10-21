@@ -168,4 +168,5 @@
 /Users/micheleaponte/etnadev/Startup.cs
 /Users/micheleaponte/etnadev/Controllers/HomeController.cs
 /Users/micheleaponte/etnadev/Models/ViewModels/RegistrationViewModel.cs
+/Users/micheleaponte/etnadev/ViewComponents/GoogleMapsTagHelper.cs
 /Users/micheleaponte/etnadev/ViewComponents/RegistrationViewComponent.cs

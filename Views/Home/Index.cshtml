@@ -1,9 +1,21 @@
-@{
-    ViewBag.Title = "EtnaDev.Net - Home Page - EtnaDev.NET";
-}
+@{ ViewBag.Title = "EtnaDev.Net - Home Page - EtnaDev.NET"; } @Html.Partial("_Header") @await Html.PartialAsync("_Event")
+@{ await Html.RenderPartialAsync("_ChiSiamo"); } @await Component.InvokeAsync("Registration")
 
-@Html.Partial("_Header")
-@await Html.PartialAsync("_Event")
-@{ await Html.RenderPartialAsync("_ChiSiamo"); }
-
-@await Component.InvokeAsync("Registration")
+<section id="dove_siamo" class="dove_siamo">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 text-center">
+				<h2>Dove Siamo</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h3>Cittadella Universitaria - Dipartimento di Ingegneria Informatica - Viale Andrea Doria, 6 - Catania</h3>
+			</div>
+		</div>
+		<div class="row" gm-latitude="37.526114" gm-longitude="15.074358">
+			@*<iframe style="border: 0;" src="https://www.google.com/maps/embed/v1/place?q=37.526114,15.074358&key=AIzaSyBVVdNkSZdAHZ1evnizT4CHhTfUuMUaQLM"
+				width="100%" height="450" frameborder="0" allowfullscreen=""></iframe>*@
+		</div>
+	</div>
+</section>
